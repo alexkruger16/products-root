@@ -1,0 +1,38 @@
+plugins {
+	id 'org.springframework.boot' version '2.4.4'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'war'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	api project(":products-core")
+	
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok:1.18.20'
+	compileOnly group: 'javax.servlet', name: 'javax.servlet-api'
+	annotationProcessor 'org.projectlombok:lombok:1.18.20'
+	implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
+	
+	// para generar jar
+  	//providedRuntime ('org.springframework.boot:spring-boot-starter-tomcat')
+  	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	
+	testImplementation('org.springframework.boot:spring-boot-starter-test')
+	testCompileOnly 'org.projectlombok:lombok:1.18.20'
+	testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
+	
+	
+}
+
+configurations.implementation {
+    exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+}
+
+
+test {
+	useJUnitPlatform()
+}

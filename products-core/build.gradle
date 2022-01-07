@@ -1,0 +1,31 @@
+plugins {
+	id 'org.springframework.boot' version '2.4.4'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+}
+// In this section you declare where to find the dependencies of your project
+repositories {
+    // Use jcenter for resolving your dependencies.
+    // You can declare any Maven/Ivy/file repository here.
+    mavenCentral()
+}
+
+
+dependencies {
+	api project(":products-client")
+    
+    implementation 'org.springframework.boot:spring-boot-autoconfigure'
+    implementation group: 'com.orientechnologies', name: 'orientdb-core', version: '2.2.35'
+    implementation group: 'com.orientechnologies', name: 'orientdb-client', version: '2.2.35'
+    implementation group: 'com.orientechnologies', name: 'orientdb-object', version: '2.2.35'
+    
+    // Use JUnit test framework
+    testImplementation 'junit:junit:4.12'  
+}
+
+bootJar {
+    	enabled = false
+}
+
+jar {
+    	enabled = true
+}
