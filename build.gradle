@@ -25,11 +25,6 @@ repositories {
     mavenCentral()
 }
 
-configurations {
-  compile.exclude module: 'spring-boot-starter-tomcat'
-  compile.exclude group: 'org.apache.tomcat'
-}
-
 subprojects {
 	
 	
